@@ -7,7 +7,8 @@ For a model that takes too much time in the training process, this can be time-c
 - https://forum.rasa.com/t/do-you-always-have-to-run-rasa-train-when-making-changes-to-domain-yml-for-response-text/36225
 
 ## Usage
-Put the `main.py` file inside your rasa project.
+Ssimply download the main.py file and place it inside your Rasa project directory.
+Then, run the script using the command:
 ```bash
 python main.py
 ```
