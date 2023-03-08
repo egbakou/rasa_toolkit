@@ -62,4 +62,4 @@ def update_rasa_model(trained_model_path: str = TRAINED_MODEL_PATH,
 
 if __name__ == "__main__":
     # Update the latest Rasa model after updating responses in the domain files
-    update_rasa_model(domain_directory_path="data/domain/")
+    update_rasa_model()
