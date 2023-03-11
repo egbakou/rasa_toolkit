@@ -23,16 +23,18 @@ def update_rasa_model(trained_model_path: str = TRAINED_MODEL_PATH,
     if os.path.exists(TEMP_DIR):
         shutil.rmtree(TEMP_DIR)
     os.makedirs(TEMP_DIR)
+    print(f"Temporary directory {TEMP_DIR} created")
 
     # Step 2: Load domain files
     domain = Domain.from_directory(domain_directory_path)
 
     # Step 3: Merge domain files
-    domain.persist(f"{TEMP_DIR}domain.yml")
+    merged_domain_path = Path(f"{TEMP_DIR}domain.yml")
+    domain.persist(merged_domain_path)
 
     # Step 4: Get the latest model and its name
     model_archive_path = get_latest_model(trained_model_path)
-    print(f"model_path: {model_archive_path}")
+    print(f"Latest model found at {model_archive_path}")
     # get model name from the path without extension
     model_name = Path(model_archive_path).stem
     # remove .tar from model name
@@ -65,7 +67,9 @@ def update_rasa_model(trained_model_path: str = TRAINED_MODEL_PATH,
     archive_path = Path(f"{TEMP_DIR}{model_name}.tar.gz")
     with TarSafe.open(archive_path, "w:gz") as tar:
         tar.add(storage_path, arcname="")
-
+    print(f"Repalce your latest model with the updated version located at {archive_path}")
+    merged_domain_path.unlink()
+    
     # remove storage_path directory
     shutil.rmtree(storage_path)
 
