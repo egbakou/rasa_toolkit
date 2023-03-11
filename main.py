@@ -67,7 +67,7 @@ def update_rasa_model(trained_model_path: str = TRAINED_MODEL_PATH,
     archive_path = Path(f"{TEMP_DIR}{model_name}.tar.gz")
     with TarSafe.open(archive_path, "w:gz") as tar:
         tar.add(storage_path, arcname="")
-    print(f"Repalce your latest model with the updated version located at {archive_path}")
+    print(f"Repalce your latest model with the updated version located at {archive_path} !")
     merged_domain_path.unlink()
     
     # remove storage_path directory
