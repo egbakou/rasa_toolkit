@@ -1,5 +1,5 @@
 # rasa_toolkit
-Python script to update your rasa model without retranning.
+Python script to update your rasa model without retraining.
 
 ##  Issue solved by this project
 When you have trained a model and you made changes to a response text in of your domain file, the model needs to be retrained. 
